@@ -18,6 +18,8 @@
 #include "Worker.cuh"
 #include <sstream>
 #include "lib/SECP256k1.h"
+#include <inttypes.h>
+sprintf(buf, "%" PRIu64, x);
 
 using namespace std;
 
@@ -818,7 +820,9 @@ void printSpeed(double speed) {
                 security = WIFSTART.substr(konec555 - step + 1, 1);
 
                 if (kstr99 != security) {
-                    printf("  Letter return   : % -> %s \n", security.c_str(), kstr99.c_str());
+                      printf("  Letter return   : % -> %s \n", security.c_str(), kstr99.c_str());
+                     
+
                     RANGE_START.Sub(&down);
                 }
             }
