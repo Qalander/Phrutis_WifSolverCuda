@@ -1,11 +1,9 @@
 # WifSolver Setup Guide for Linux (CUDA-enabled)
 
-# -------------------------------------------
-# 1. Update system and install dependencies
-# -------------------------------------------
+
 sudo apt update && sudo apt upgrade -y
 
-# Essential build tools
+
 sudo apt install -y build-essential make g++ gcc git make 
 
 # Optional: If you don’t already have CUDA installed
