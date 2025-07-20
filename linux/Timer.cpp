@@ -16,6 +16,8 @@
 */
 
 #include "Timer.h"
+#include <cstdint>
+
 
 static const char *prefix[] = { "", "Kilo", "Mega", "Giga", "Tera", "Peta", "Hexa" };
 
