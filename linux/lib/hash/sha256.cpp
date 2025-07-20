@@ -17,6 +17,9 @@
 
 #include <string.h>
 #include "sha256.h"
+#include <cstdint>
+#include <cstring>
+#include <byteswap.h>
 
 #define BSWAP
 
@@ -56,7 +59,8 @@ namespace _sha256
     h = t1 + t2;
 
 #ifdef BSWAP
-#define WRITEBE32(ptr,x) *((uint32_t *)(ptr)) = _byteswap_ulong(x)
+// #define WRITEBE32(ptr,x) *((uint32_t *)(ptr)) = _byteswap_ulong(x)
+#define WRITEBE32(ptr,x) *((uint32_t *)(ptr)) = bswap_32(x)
 #define WRITEBE64(ptr,x) *((uint64_t *)(ptr)) = _byteswap_uint64(x)
 #define READBE32(ptr) (uint32_t)_byteswap_ulong(*(uint32_t *)(ptr))
 #else
