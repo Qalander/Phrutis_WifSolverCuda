@@ -1,0 +1,52 @@
+# WifSolver Setup Guide for Linux (CUDA-enabled)
+
+# -------------------------------------------
+# 1. Update system and install dependencies
+# -------------------------------------------
+sudo apt update && sudo apt upgrade -y
+
+# Essential build tools
+sudo apt install -y build-essential make g++ gcc git
+
+# Optional: If you don’t already have CUDA installed
+# (Skip if CUDA is pre-installed and paths are set up)
+# sudo apt install -y nvidia-cuda-toolkit
+
+# -------------------------------------------
+# 2. Export CUDA environment paths
+# (Only if not already set in ~/.bashrc)
+# -------------------------------------------
+export CUDA=/usr/local/cuda
+export PATH=$CUDA/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA/lib64:$LD_LIBRARY_PATH
+
+# -------------------------------------------
+# 3. Clone WifSolver source code (if not yet)
+# -------------------------------------------
+# git clone https://github.com/Qalander/Phrutis_WifSolverCuda.git
+# cd wifsolver/linux
+
+# -------------------------------------------
+# 4. Fix compatibility issues (if not already applied)
+# -------------------------------------------
+# Edit these files if needed:
+# - sha256.cpp/.h → Add `#include <cstdint>` and use `bswap_32` instead of `_byteswap_ulong`
+# - Timer.cpp/.h  → Add `#include <cstdint>`
+# - base58.c      → Add `#include <stdlib.h>`
+# - main.cu       → Replace %llu/%d format specifiers with %lu/%zu or use PRIu64 from <inttypes.h>
+
+# -------------------------------------------
+# 5. Build the project
+# -------------------------------------------
+make -f Makefile89
+
+# -------------------------------------------
+# 6. Run WifSolver
+# -------------------------------------------
+./wifSolver
+
+# -------------------------------------------
+# Notes:
+# - You can pass flags/parameters to ./wifSolver depending on your usage.
+# - To clean build files:
+# make clean
