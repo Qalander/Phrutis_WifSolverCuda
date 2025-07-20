@@ -6,7 +6,7 @@
 sudo apt update && sudo apt upgrade -y
 
 # Essential build tools
-sudo apt install -y build-essential make g++ gcc git
+sudo apt install -y build-essential make g++ gcc git make 
 
 # Optional: If you don’t already have CUDA installed
 # (Skip if CUDA is pre-installed and paths are set up)
