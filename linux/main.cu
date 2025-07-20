@@ -85,7 +85,10 @@ void launchOnAllGPUs() {
     Int chunkSize = RANGE_TOTAL / GPU_COUNT;
 
     for (int i = 0; i < GPU_COUNT; ++i) {
-        Int offset = chunkSize * i;
+        Int offset;
+          offset = chunkSize;
+               offset.Mul(i);
+
         gpuThreads.emplace_back(gpuWorker, i, offset, chunkSize);
     }
 
@@ -125,7 +128,6 @@ cudaError_t processCudaUnified();
 bool unifiedMemory = true;
 
 int DEVICE_NR = 0;
-int GPU_COUNT = 0;
 
 unsigned int BLOCK_THREADS = 0;
 unsigned int BLOCK_NUMBER = 0;
