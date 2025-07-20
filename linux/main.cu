@@ -1,6 +1,7 @@
 ﻿#include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 
+#include <thread>
 #include <vector>
 #include <regex>
 #include <string>
@@ -129,6 +130,7 @@ int GPU_COUNT = 0;
 unsigned int BLOCK_THREADS = 0;
 unsigned int BLOCK_NUMBER = 0;
 unsigned int THREAD_STEPS = 5000;
+int GPU_COUNT = 0; 
 size_t wifLen = 53;
 int dataLen = 37;
 int zapusk;
