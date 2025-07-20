@@ -24,7 +24,8 @@ export LD_LIBRARY_PATH=$CUDA/lib64:$LD_LIBRARY_PATH
 # 3. Clone WifSolver source code (if not yet)
 # -------------------------------------------
 # git clone https://github.com/Qalander/Phrutis_WifSolverCuda.git
-# cd wifsolver/linux
+# cd Phrutis_WifSolverCuda/linux
+
 
 # -------------------------------------------
 # 4. Fix compatibility issues (if not already applied)
