@@ -79,19 +79,21 @@ void gpuWorker(int gpuId, Int rangeOffset, Int chunkSize) {
 
 
 void launchOnAllGPUs() {
-    cudaGetDeviceCount(&GPU_COUNT);
+    cudaError_t status = cudaGetDeviceCount(&GPU_COUNT);
+    if (status != cudaSuccess) {
+        std::cerr << "Failed to get CUDA device count!" << std::endl;
+        return;
+    }
+
     std::vector<std::thread> gpuThreads;
 
-    Int chunkSize;
-           chunkSize = RANGE_END - RANGE_START;
-           chunkSize.Div(GPU_COUNT);
-
+    Int totalRange = RANGE_END - RANGE_START;
+    Int chunkSize = totalRange;
+    chunkSize.Div(GPU_COUNT);  // divide keyspace
 
     for (int i = 0; i < GPU_COUNT; ++i) {
-        Int offset;
-          offset = chunkSize;
-               offset *= i;
-
+        Int offset = chunkSize;
+        offset = offset * i;  // Use defined Int operator*
 
         gpuThreads.emplace_back(gpuWorker, i, offset, chunkSize);
     }
@@ -100,6 +102,7 @@ void launchOnAllGPUs() {
         t.join();
     }
 }
+
     cudaGetDeviceCount(&GPU_COUNT);
     std::vector<std::thread> gpuThreads;
 
@@ -137,7 +140,6 @@ int GPU_COUNT = 0;
 unsigned int BLOCK_THREADS = 0;
 unsigned int BLOCK_NUMBER = 0;
 unsigned int THREAD_STEPS = 5000;
-int GPU_COUNT = 0; 
 size_t wifLen = 53;
 int dataLen = 37;
 int zapusk;
