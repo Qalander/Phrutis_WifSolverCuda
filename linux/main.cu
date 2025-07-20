@@ -18,9 +18,6 @@
 #include "Worker.cuh"
 #include <sstream>
 #include "lib/SECP256k1.h"
-#include <inttypes.h>
-using std::sprintf;
-sprintf(buf, "%" PRIu64, x);
 
 using namespace std;
 
