@@ -4,7 +4,7 @@
 sudo apt update && sudo apt upgrade -y
 
 
-sudo apt install -y build-essential make g++ gcc git make 
+sudo apt install -y build-essential make g++ gcc git make nvcc
 
 # Optional: If you don’t already have CUDA installed
 # (Skip if CUDA is pre-installed and paths are set up)
